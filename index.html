@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>LoopeyTunes_Race</title>
 
-    <link rel="stylesheet" href="./css/main.css">
-</head>
-<body>
+    <link rel="stylesheet" href="./css/main.css" />
+  </head>
+  <body>
+    <audio id="menuAudio">
+      <source src="./music/background_music.mp3" />
+    </audio>
+    <audio controls autoplay loop>
+      <source id="menuAudio" src="./music/background_music.mp3" />
+      <embed src="./music/background_music.mp3" autoplay="autoplay" loop="loop" />
+    </audio>
+
     <div id="board"></div>
-    
-    
+
     <script src="./js/main.js"></script>
-    
-</body>
+  </body>
 </html>

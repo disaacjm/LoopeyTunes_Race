@@ -2,17 +2,22 @@ class Game {
   constructor() {
     this.player = null;
     this.obstaclesArr = []; // will store instances of the class Obstacle
+    this.sound = document.getElementById('menuAudio');
   }
   start() {
     this.player = new Player();
 
     this.attachEventListeners();
 
+    this.sound.play()
+
+    // startCountdown (5);
+
     // Create new obstacles
     setInterval(() => {
       const newObstacle = new Obstacle();
       this.obstaclesArr.push(newObstacle);
-    }, 4000);
+    }, 500);
 
     // Update obstacles
     setInterval(() => {
@@ -26,7 +31,21 @@ class Game {
         // Detect if obstacle needs to be removed
         this.removeObstacleIfOutside(obstacleInstance);
       });
-    }, 60);
+    }, 20);
+    function startCountdown(seconds) {
+        let counter = seconds;
+          
+        const interval = setInterval(() => {
+          console.log(counter);
+          counter--;
+            
+          if (counter < 0 ) {
+            clearInterval(interval);
+            console.log('Finish!');
+            location.href = "./finish.html"
+          }
+        }, 1000);
+      }
   }
 
   attachEventListeners() {

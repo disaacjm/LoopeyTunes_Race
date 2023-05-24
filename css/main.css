@@ -7,7 +7,7 @@ body {
 
 #board {
   background-color: #2c3456;
-  background: url(/images/road.png);
+  background: url(./images/road.png);
   background-size: cover;
   background-position-x: center;
   height: 100vh;

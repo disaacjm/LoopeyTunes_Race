@@ -46,3 +46,23 @@ body {
   transition: linear 200ms;
 }
 
+.countdown-timer-container {
+    width: 100%;
+    align-items: center;
+    align-content: center;
+    align-self: center;
+    text-align: center;
+}
+
+.countdown-timer-container div {
+    width: 25%;
+    text-align: center;
+    font-size: 30px;
+}
+
+.countdown-timer-values {
+    font-size: 60px !important;
+    align-items: center;
+    text-align: center;
+}
+

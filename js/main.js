@@ -1,5 +1,8 @@
 class Game {
   constructor() {
+    this.boardWidth = 800;
+    this.boardHeight = 600;
+    this.units = `px`;
     this.player = null;
     this.obstaclesArr = []; // will store instances of the class Obstacle
     this.sound = document.getElementById("menuAudio");
@@ -11,7 +14,7 @@ class Game {
 
     this.sound.play();
 
-    // startCountdown (5);
+    startCountdown (30);
 
     // Create new obstacles
     setInterval(() => {
@@ -32,7 +35,7 @@ class Game {
         this.removeObstacleIfOutside(obstacleInstance);
       });
     }, 20);
-    function startCountdown(seconds) {
+     function startCountdown(seconds) {
       let counter = seconds;
 
       const interval = setInterval(() => {
@@ -117,7 +120,7 @@ class Player {
 
   moveLeft() {
     if (this.positionX > 11.5) {
-      this.positionX-=2;
+      this.positionX -= 2;
       this.domElement.style.left = this.positionX + "vw"; //reflect change in the css
     } else {
       this.positionX = 11.5;
@@ -125,7 +128,7 @@ class Player {
   }
   moveRight() {
     if (this.positionX <= 52.5) {
-      this.positionX+=2;
+      this.positionX += 2;
       this.domElement.style.left = this.positionX + "vw"; //reflect change in the css
     } else {
       this.positionX = 52.5;
@@ -133,7 +136,7 @@ class Player {
   }
   moveUp() {
     if (this.positionY <= 86) {
-      this.positionY+=2; //modify the position
+      this.positionY += 2; //modify the position
       this.domElement.style.bottom = this.positionY + "vh"; //reflect change in the css
     } else {
       this.positionY = 86;
@@ -141,7 +144,7 @@ class Player {
   }
   moveDown() {
     if (this.positionY > 0) {
-      this.positionY-= 2; //modify the position
+      this.positionY -= 2; //modify the position
       this.domElement.style.bottom = this.positionY + "vh"; //reflect change in the css
     } else {
       this.positionY = 0;
@@ -153,7 +156,7 @@ class Obstacle {
   constructor() {
     this.width = 3;
     this.height = 12;
-    this.positionX = Math.floor(Math.random() * (41 + 11.5));
+    this.positionX = 10 + Math.floor(Math.random() * 44);
     this.positionY = 100;
 
     this.domElement = null;

@@ -28,7 +28,7 @@ body {
   bottom: 200px;
   background-repeat: no-repeat;
   background-size: 200px 200pxpx;
-  background: url(/images/car2.jpg);
+  background: url(./images/car2.jpg);
   transition: linear 100ms;
 }
 
@@ -41,7 +41,7 @@ body {
   bottom: 200px;
   background-repeat: no-repeat;
   background-size: 200px 200pxpx;
-  background: url(/images/car2.jpg);
+  background: url(./images/car2.jpg);
   transform: rotate(180deg);
   transition: linear 200ms;
 }

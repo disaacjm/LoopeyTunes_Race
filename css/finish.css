@@ -1,0 +1,14 @@
+body {
+  background-image: url("../images/congrats.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+h1 {
+  font-size: 50px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  text-align: center;
+}
+
+a {
+  color: aliceblue;
+}

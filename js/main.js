@@ -3,6 +3,8 @@ class Game {
     this.player = null;
     this.obstaclesArr = []; // will store instances of the class Obstacle
     this.sound = document.getElementById("menuAudio");
+    this.score = 0;
+    this.scoreDisplay = document.getElementById("score");
   }
   start() {
     this.player = new Player();
@@ -17,7 +19,7 @@ class Game {
     setInterval(() => {
       const newObstacle = new Obstacle();
       this.obstaclesArr.push(newObstacle);
-    }, 500);
+    }, 700);
 
     // Update obstacles
     setInterval(() => {
@@ -31,8 +33,8 @@ class Game {
         // Detect if obstacle needs to be removed
         this.removeObstacleIfOutside(obstacleInstance);
       });
-    }, 20);
-}
+    }, 30);
+  }
 
   attachEventListeners() {
     document.addEventListener("keydown", (event) => {
@@ -57,90 +59,98 @@ class Game {
       obstacleInstance.height + obstacleInstance.positionY >
         this.player.positionY
     ) {
-      console.log("game over my fren");
-      location.href = "./gameover.html";
+        this.score -= 10;}
+        {
+        // if (this.score < 0) {
+        //     location.href = "./gameover.html";
+        //     console.log("game over!!!");
+        // }
     }
   }
 
   removeObstacleIfOutside(obstacleInstance) {
-    if (obstacleInstance.positionY === 0 - obstacleInstance.height) {
+    if (obstacleInstance.positionY === -2 - obstacleInstance.height) {
       //1. remove elm from the dom
       obstacleInstance.domElement.remove();
 
       //2. remove from the array of obstacles
       this.obstaclesArr.shift();
+      
+      this.score += 10
+      const scoreDisplay = document.getElementById("score");
+      scoreDisplay.textContent = `Score ${this.score}`;
     }
   }
-  
 }
 
 class Player {
-  constructor() {
-    this.width = null;
-    this.height = null;
-    this.positionX = 10 - this.width;
-    this.positionY = -10;
+    constructor() {
+        this.width = 3;
+        this.height = 12;
+        this.positionX = 25 - this.width / 2;
+        this.positionY = 5;
+    
+        this.domElement = null; // we will store a ref. to the dom element of the player
+    
+        this.createDomElement();
+      }
+    
+      createDomElement() {
+        // step1: create the element
+        this.domElement = document.createElement("div");
+    
+        // step2: add content or modify (ex. innerHTML...)
+        this.domElement.id = "player";
+        this.domElement.style.width = this.width + "vw";
+        this.domElement.style.height = this.height + "vh";
+        this.domElement.style.left = this.positionX + "vw";
+        this.domElement.style.bottom = this.positionY + "vh";
+    
+        //step3: append to the dom: `parentElm.appendChild()`
+        const parentElm = document.getElementById("board");
+        parentElm.appendChild(this.domElement);
+      }
 
-    this.domElement = null; // we will store a ref. to the dom element of the player
-
-    this.createDomElement();
-  }
-
-  createDomElement() {
-    // step1: create the element
-    this.domElement = document.createElement("div");
-
-    // step2: add content or modify (ex. innerHTML...)
-    this.domElement.id = "player";
-    this.domElement.style.width = this.width + "vw";
-    this.domElement.style.height = this.height + "vh";
-    this.domElement.style.left = this.positionX + "vw";
-    this.domElement.style.bottom = this.positionY + "vh";
-
-    //step3: append to the dom: `parentElm.appendChild()`
-    const parentElm = document.getElementById("board");
-    parentElm.appendChild(this.domElement);
-  }
 
   moveLeft() {
-    if (this.positionX > 2) {
-      this.positionX -= 2;
+    if (this.positionX > 13.5) {
+      this.positionX -= 2.5;
       this.domElement.style.left = this.positionX + "vw"; //reflect change in the css
     } else {
-      this.positionX = 2;
+      this.positionX = 13.5;
     }
   }
   moveRight() {
-    if (this.positionX <= 36) {
-      this.positionX += 2;
+    if (this.positionX <= 49 ) {
+      this.positionX += 2.5;
       this.domElement.style.left = this.positionX + "vw"; //reflect change in the css
     } else {
-      this.positionX = 36;
+      this.positionX = 49;
     }
   }
   moveUp() {
-    if (this.positionY <= 68) {
-      this.positionY += 2; //modify the position
+    if (this.positionY <= 76) {
+      this.positionY += 2.5; //modify the position
       this.domElement.style.bottom = this.positionY + "vh"; //reflect change in the css
     } else {
-      this.positionY = 68;
+      this.positionY = 76;
     }
   }
   moveDown() {
-    if (this.positionY > -10) {
-      this.positionY -= 2; //modify the position
+    if (this.positionY > -5) {
+      this.positionY -= 2.5; //modify the position
       this.domElement.style.bottom = this.positionY + "vh"; //reflect change in the css
     } else {
-      this.positionY = -10;
+      this.positionY = -5;
     }
   }
 }
 
 class Obstacle {
   constructor() {
-    this.width = null;
-    this.height = null;
-    this.positionX = 2 + Math.floor(Math.random() * 34);
+    this.width = 3;
+    this.height = 12;
+    this.positionX =  11.5 + Math.floor(Math.random() * 40);
     this.positionY = 100;
 
     this.domElement = null;
@@ -167,33 +177,30 @@ class Obstacle {
     this.domElement.style.bottom = this.positionY + "vh";
   }
 }
-const timer = document.getElementById('timer');
+const timer = document.getElementById("timer");
 let timerInterval;
 startTimer = () => {
-    clearInterval(timerInterval);
-    let second = 0,
-        minute = 1;
-      
-    timerInterval = setInterval(function () {
-        timer.classList.toggle('odd');
+  clearInterval(timerInterval);
+  let second = 30,
+    minute = 10;
 
-        timer.innerHTML =
-            (minute < 10 ? '0' + minute : minute) +
-            ':' +
-            (second < 10 ? '0' + second : second);
+  timerInterval = setInterval(function () {
+    timer.classList.toggle("odd");
 
-        second--;
+    timer.innerHTML = `Timer <b>${minute < 10 ? "0" + minute : minute}:${second < 10 ? "0" + second : second}`;
 
-        if (second == -1) {
-            minute--;
-            second = 59;
-        }
+    second--;
 
-        if (minute == -1) {
-            clearInterval(timerInterval);
-            alert("Countdown complete!");
-        }
-    }, 1000);
+    if (second == -1) {
+      minute--;
+      second = 59;
+    }
+
+    if (minute == -1) {
+      clearInterval(timerInterval);
+      location.href = "./finish.html";
+    }
+  }, 1000);
 };
 
 const game = new Game();

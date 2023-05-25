@@ -21,33 +21,51 @@ body {
 }
 
 #player {
-  height: 600px;
+  /* height: 600px; */
   border-radius: 10px;
-  width: 700px;
+  /* width: 700px; */
   position: absolute;
   background-repeat: no-repeat;
-  transform: scale(0.3)
-  rotate(360deg);
-  background: url(../images/bugs_bunny.png);
+  transform: scale(2.5);
+  /* rotate(360deg); */
+  background-image: url(../images/bugs_bunny.png);
+  background-size: contain;
   transition: linear 100ms;
 }
 
 .obstacle {
-  height: 600px;
+  /* height: 600px; */
   border-radius: 10px;
-  width: 700px;
+  /* width: 700px; */
   position: absolute;
   background-repeat: no-repeat;
-  background: url(../images/coyote.png);
-  transform: scale(0.3);
-  rotate(270deg);
+  background-image: url(../images/coyote.png);
+  background-size: contain;
+  transform: scale(2.5);
+  rotate: (270deg);
   transition: linear 200ms;
 }
 
+#score {
+    height: 25px;
+    width: 25px;
+  position: absolute;
+  top: 50%;
+  left: 22%;
+  transform: translate(-50%, -50%);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 2em;
+  color: aliceblue;
+}
+
 #timer {
-    font-size: 2em;
-    box-sizing: border-box;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    color: white;
-    background-color: black;
-  }
+    height: 25px;
+    width: 25px;
+  position: absolute;
+  top: 50%;
+  right: 22%;
+  transform: translate(-50%, -50%);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 2em;
+  color: aliceblue;
+}

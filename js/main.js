@@ -66,12 +66,11 @@ class Game {
       console.log("after....", this.obstaclesArr.length);
       this.score -= 30;
     }
-    
-      if (this.score < 0) {
-          location.href = "./gameover.html";
-          console.log("game over!!!");
-      }
-    
+
+    if (this.score < 0) {
+      location.href = "./gameover.html";
+      console.log("game over!!!");
+    }
   }
 
   removeObstacleIfOutside(obstacleInstance) {

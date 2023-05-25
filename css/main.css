@@ -47,25 +47,25 @@ body {
 }
 
 #score {
-    height: 25px;
-    width: 25px;
+  height: 25px;
+  width: 25px;
   position: absolute;
   top: 50%;
   left: 22%;
   transform: translate(-50%, -50%);
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   font-size: 2em;
   color: aliceblue;
 }
 
 #timer {
-    height: 25px;
-    width: 25px;
+  height: 25px;
+  width: 25px;
   position: absolute;
   top: 50%;
   right: 22%;
   transform: translate(-50%, -50%);
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   font-size: 2em;
   color: aliceblue;
 }

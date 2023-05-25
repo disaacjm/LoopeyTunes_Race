@@ -1,8 +1,5 @@
 class Game {
   constructor() {
-    this.boardWidth = 800;
-    this.boardHeight = 600;
-    this.units = `px`;
     this.player = null;
     this.obstaclesArr = []; // will store instances of the class Obstacle
     this.sound = document.getElementById("menuAudio");
@@ -14,7 +11,7 @@ class Game {
 
     this.sound.play();
 
-    startCountdown (30);
+    startTimer();
 
     // Create new obstacles
     setInterval(() => {
@@ -35,21 +32,7 @@ class Game {
         this.removeObstacleIfOutside(obstacleInstance);
       });
     }, 20);
-     function startCountdown(seconds) {
-      let counter = seconds;
-
-      const interval = setInterval(() => {
-        console.log(counter);
-        counter--;
-
-        if (counter < 0) {
-          clearInterval(interval);
-          console.log("Finish!");
-          location.href = "./finish.html";
-        }
-      }, 1000);
-    }
-  }
+}
 
   attachEventListeners() {
     document.addEventListener("keydown", (event) => {
@@ -88,14 +71,15 @@ class Game {
       this.obstaclesArr.shift();
     }
   }
+  
 }
 
 class Player {
   constructor() {
-    this.width = 3;
-    this.height = 12;
-    this.positionX = 25 - this.width / 2;
-    this.positionY = 25;
+    this.width = null;
+    this.height = null;
+    this.positionX = 10 - this.width;
+    this.positionY = -10;
 
     this.domElement = null; // we will store a ref. to the dom element of the player
 
@@ -119,44 +103,44 @@ class Player {
   }
 
   moveLeft() {
-    if (this.positionX > 11.5) {
+    if (this.positionX > 2) {
       this.positionX -= 2;
       this.domElement.style.left = this.positionX + "vw"; //reflect change in the css
     } else {
-      this.positionX = 11.5;
+      this.positionX = 2;
     }
   }
   moveRight() {
-    if (this.positionX <= 52.5) {
+    if (this.positionX <= 36) {
       this.positionX += 2;
       this.domElement.style.left = this.positionX + "vw"; //reflect change in the css
     } else {
-      this.positionX = 52.5;
+      this.positionX = 36;
     }
   }
   moveUp() {
-    if (this.positionY <= 86) {
+    if (this.positionY <= 68) {
       this.positionY += 2; //modify the position
       this.domElement.style.bottom = this.positionY + "vh"; //reflect change in the css
     } else {
-      this.positionY = 86;
+      this.positionY = 68;
     }
   }
   moveDown() {
-    if (this.positionY > 0) {
+    if (this.positionY > -10) {
       this.positionY -= 2; //modify the position
       this.domElement.style.bottom = this.positionY + "vh"; //reflect change in the css
     } else {
-      this.positionY = 0;
+      this.positionY = -10;
     }
   }
 }
 
 class Obstacle {
   constructor() {
-    this.width = 3;
-    this.height = 12;
-    this.positionX = 10 + Math.floor(Math.random() * 44);
+    this.width = null;
+    this.height = null;
+    this.positionX = 2 + Math.floor(Math.random() * 34);
     this.positionY = 100;
 
     this.domElement = null;
@@ -183,6 +167,34 @@ class Obstacle {
     this.domElement.style.bottom = this.positionY + "vh";
   }
 }
+const timer = document.getElementById('timer');
+let timerInterval;
+startTimer = () => {
+    clearInterval(timerInterval);
+    let second = 0,
+        minute = 1;
+      
+    timerInterval = setInterval(function () {
+        timer.classList.toggle('odd');
+
+        timer.innerHTML =
+            (minute < 10 ? '0' + minute : minute) +
+            ':' +
+            (second < 10 ? '0' + second : second);
+
+        second--;
+
+        if (second == -1) {
+            minute--;
+            second = 59;
+        }
+
+        if (minute == -1) {
+            clearInterval(timerInterval);
+            alert("Countdown complete!");
+        }
+    }, 1000);
+};
 
 const game = new Game();
 game.start();

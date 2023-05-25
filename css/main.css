@@ -21,48 +21,33 @@ body {
 }
 
 #player {
-  height: 200px;
+  height: 600px;
   border-radius: 10px;
-  width: 200px;
+  width: 700px;
   position: absolute;
-  bottom: 200px;
   background-repeat: no-repeat;
-  background-size: 200px 200pxpx;
-  background: url(../images/car2.jpg);
+  transform: scale(0.3)
+  rotate(360deg);
+  background: url(../images/bugs_bunny.png);
   transition: linear 100ms;
 }
 
 .obstacle {
-  /*background-color: blue;*/
-  height: 200px;
+  height: 600px;
   border-radius: 10px;
-  width: 200px;
+  width: 700px;
   position: absolute;
-  bottom: 200px;
   background-repeat: no-repeat;
-  background-size: 200px 200pxpx;
-  background: url(../images/car2.jpg);
-  transform: rotate(180deg);
+  background: url(../images/coyote.png);
+  transform: scale(0.3);
+  rotate(270deg);
   transition: linear 200ms;
 }
 
-.countdown-timer-container {
-    width: 100%;
-    align-items: center;
-    align-content: center;
-    align-self: center;
-    text-align: center;
-}
-
-.countdown-timer-container div {
-    width: 25%;
-    text-align: center;
-    font-size: 30px;
-}
-
-.countdown-timer-values {
-    font-size: 60px !important;
-    align-items: center;
-    text-align: center;
-}
-
+#timer {
+    font-size: 2em;
+    box-sizing: border-box;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: white;
+    background-color: black;
+  }

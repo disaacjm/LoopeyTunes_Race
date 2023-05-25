@@ -12,6 +12,7 @@ class Game {
     this.attachEventListeners();
 
     this.sound.play();
+    this.sound.volume = 0.1;
 
     startTimer();
 
@@ -19,7 +20,7 @@ class Game {
     setInterval(() => {
       const newObstacle = new Obstacle();
       this.obstaclesArr.push(newObstacle);
-    }, 700);
+    }, 400);
 
     // Update obstacles
     setInterval(() => {
@@ -33,7 +34,7 @@ class Game {
         // Detect if obstacle needs to be removed
         this.removeObstacleIfOutside(obstacleInstance);
       });
-    }, 50);
+    }, 30);
   }
 
   attachEventListeners() {
@@ -185,8 +186,8 @@ const timer = document.getElementById("timer");
 let timerInterval;
 startTimer = () => {
   clearInterval(timerInterval);
-  let second = 30,
-    minute = 10;
+  let second = 00,
+    minute = 01;
 
   timerInterval = setInterval(function () {
     timer.classList.toggle("odd");

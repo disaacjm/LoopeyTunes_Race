@@ -3,6 +3,8 @@
 
 - A simple game with Bugs Bunny and Coyote and the idea of making this game was because my kids love Looney Tunes.
 
+![Screenshot from the game!](./images/screenshot.png)
+
 ## Instructions
 
 - You're Bugs Bunny and you has to avoid Coyote.

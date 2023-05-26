@@ -64,7 +64,7 @@ class Game {
       this.obstaclesArr.splice(index, 1);
       obstacleInstance.domElement.remove();
       console.log("after....", this.obstaclesArr.length);
-      this.score -= 30;
+      this.score -= 60;
     }
 
     if (this.score < 0) {
